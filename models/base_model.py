@@ -30,4 +30,8 @@ class BaseModel():
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
+    def __str__(self):
+        """Returns string representation of BaseModel instance"""
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
