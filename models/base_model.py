@@ -45,4 +45,7 @@ class BaseModel():
             del newdict['_sa_instance_state']
         return newdict
 
-
+    def save(self):
+        """updates public instance attr updated_at with current datetime"""
+        self.updated_at = datetime.now()
+        models.storage.save()
