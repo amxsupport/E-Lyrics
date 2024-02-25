@@ -35,3 +35,14 @@ class BaseModel():
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
+    def to_dict(self):
+        """returns a dictionary containing all keys/values of __dict__"""
+        newdict = self.__dict__.copy()
+        newdict['created_at'] = datetime.isoformat(newdict['created_at'])
+        newdict['updated_at'] = datetime.isoformat(newdict['updated_at'])
+        newdict['__class__'] = self.__class__.__name__
+        if newdict.get('_sa_instance_state'):
+            del newdict['_sa_instance_state']
+        return newdict
+
+
