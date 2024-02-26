@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""This module creates the Unittest for BaseModel class"""
+
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
@@ -28,4 +31,12 @@ class TestBaseModel(unittest.TestCase):
     def test_updated_at(self):
         """Test updated_at attribute"""
         self.assertIsInstance(self.model.updated_at, datetime)
+
+    @patch('models.storage.save')
+    def test_save_method(self, mock_save):
+        """Test save method"""
+        old_updated_at = self.model.updated_at
+        self.model.save()
+        self.assertNotEqual(self.model.updated_at, old_updated_at)
+        mock_save.assert_called_once()
 
