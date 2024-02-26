@@ -15,3 +15,13 @@ class TestInterpretation(unittest.TestCase):
                                              song_id="test_song_id",
                                              word_id="test_word_id")
 
+    def test_attributes(self):
+        """Test Interpretation attributes"""
+        self.assertTrue(hasattr(self.interpretation, 'id'))
+        self.assertTrue(hasattr(self.interpretation, 'created_at'))
+        self.assertTrue(hasattr(self.interpretation, 'updated_at'))
+        self.assertTrue(hasattr(self.interpretation, 'text'))
+        self.assertTrue(hasattr(self.interpretation, 'song_id'))
+        self.assertTrue(hasattr(self.interpretation, 'word_id'))
+        self.assertTrue(hasattr(self.interpretation, 'likes'))
+
