@@ -6,3 +6,6 @@ from unittest.mock import patch
 class TestBaseModel(unittest.TestCase):
     """Test cases for the BaseModel class"""
 
+    def setUp(self):
+        """Set up test environment"""
+        self.model = BaseModel()
