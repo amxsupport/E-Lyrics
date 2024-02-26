@@ -17,3 +17,16 @@ class TestSong(unittest.TestCase):
                          genre="Test Genre",
                          image_url="https://example.com/test.jpg")
 
+    def test_attributes(self):
+        """Test Song attributes"""
+        self.assertTrue(hasattr(self.song, 'id'))
+        self.assertTrue(hasattr(self.song, 'created_at'))
+        self.assertTrue(hasattr(self.song, 'updated_at'))
+        self.assertTrue(hasattr(self.song, 'artist'))
+        self.assertTrue(hasattr(self.song, 'title'))
+        self.assertTrue(hasattr(self.song, 'lyrics'))
+        self.assertTrue(hasattr(self.song, 'genre'))
+        self.assertTrue(hasattr(self.song, 'words'))
+        self.assertTrue(hasattr(self.song, 'interpretations'))
+        self.assertTrue(hasattr(self.song, 'image_url'))
+
