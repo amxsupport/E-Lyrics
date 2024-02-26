@@ -46,3 +46,14 @@ class TestSong(unittest.TestCase):
         """Test genre attribute"""
         self.assertEqual(self.song.genre, "Test Genre")
 
+    def test_image_url_attribute(self):
+        """Test image_url attribute"""
+        self.assertEqual(self.song.image_url, "https://example.com/test.jpg")
+        
+    def test_relationships(self):
+        """Test relationships"""
+        self.assertEqual(self.song.words, [])
+        self.assertEqual(self.song.interpretations, [])
+        
+if __name__ == '__main__':
+    unittest.main()
