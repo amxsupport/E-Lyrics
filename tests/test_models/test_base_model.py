@@ -40,3 +40,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(self.model.updated_at, old_updated_at)
         mock_save.assert_called_once()
 
+    def test_to_dict_method(self):
+        """Test to_dict method"""
+        model_dict = self.model.to_dict()
+        self.assertIsInstance(model_dict, dict)
+        self.assertIn('__class__', model_dict)
+        self.assertIn('id', model_dict)
+        self.assertIn('created_at', model_dict)
+        self.assertIn('updated_at', model_dict)
+        self.assertEqual(model_dict['__class__'], 'BaseModel')
+        self.assertIsInstance(datetime.fromisoformat(model_dict['created_at']), datetime)
+        self.assertIsInstance(datetime.fromisoformat(model_dict['updated_at']), datetime)
+        
+if __name__ == '__main__':
+    unittest.main()
