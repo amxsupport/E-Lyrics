@@ -38,3 +38,11 @@ class TestSong(unittest.TestCase):
         """Test title attribute"""
         self.assertEqual(self.song.title, "Test Title")
 
+    def test_lyrics_attribute(self):
+        """Test lyrics attribute"""
+        self.assertEqual(self.song.lyrics, "Test Lyrics")
+        
+    def test_genre_attribute(self):
+        """Test genre attribute"""
+        self.assertEqual(self.song.genre, "Test Genre")
+
