@@ -30,3 +30,11 @@ class TestSong(unittest.TestCase):
         self.assertTrue(hasattr(self.song, 'interpretations'))
         self.assertTrue(hasattr(self.song, 'image_url'))
 
+    def test_artist_attribute(self):
+        """Test artist attribute"""
+        self.assertEqual(self.song.artist, "Test Artist")
+        
+    def test_title_attribute(self):
+        """Test title attribute"""
+        self.assertEqual(self.song.title, "Test Title")
+
