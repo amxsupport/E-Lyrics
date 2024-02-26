@@ -21,3 +21,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(self.model.id)
         self.assertEqual(len(self.model.id), 36)
 
+    def test_created_at(self):
+        """Test created_at attribute"""
+        self.assertIsInstance(self.model.created_at, datetime)
+        
+    def test_updated_at(self):
+        """Test updated_at attribute"""
+        self.assertIsInstance(self.model.updated_at, datetime)
+
