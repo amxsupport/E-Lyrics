@@ -33,3 +33,13 @@ class TestInterpretation(unittest.TestCase):
         """Test song_id attribute"""
         self.assertEqual(self.interpretation.song_id, "test_song_id")
 
+    def test_word_id_attribute(self):
+        """Test word_id attribute"""
+        self.assertEqual(self.interpretation.word_id, "test_word_id")
+        
+    def test_likes_attribute(self):
+        """Test likes attribute"""
+        self.assertEqual(self.interpretation.likes, 0)
+        
+if __name__ == '__main__':
+    unittest.main()
