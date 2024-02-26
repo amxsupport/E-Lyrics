@@ -25,3 +25,11 @@ class TestInterpretation(unittest.TestCase):
         self.assertTrue(hasattr(self.interpretation, 'word_id'))
         self.assertTrue(hasattr(self.interpretation, 'likes'))
 
+    def test_text_attribute(self):
+        """Test text attribute"""
+        self.assertEqual(self.interpretation.text, "Test interpretation")
+        
+    def test_song_id_attribute(self):
+        """Test song_id attribute"""
+        self.assertEqual(self.interpretation.song_id, "test_song_id")
+
