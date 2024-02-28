@@ -17,3 +17,14 @@ class TestSuggestion(unittest.TestCase):
                                      name="Test User",
                                      email="test@example.com")
 
+    def test_attributes(self):
+        """Test Suggestion attributes"""
+        self.assertTrue(hasattr(self.suggestion, 'id'))
+        self.assertTrue(hasattr(self.suggestion, 'created_at'))
+        self.assertTrue(hasattr(self.suggestion, 'updated_at'))
+        self.assertTrue(hasattr(self.suggestion, 'suggested_artist'))
+        self.assertTrue(hasattr(self.suggestion, 'suggested_song'))
+        self.assertTrue(hasattr(self.suggestion, 'suggested_words'))
+        self.assertTrue(hasattr(self.suggestion, 'name'))
+        self.assertTrue(hasattr(self.suggestion, 'email'))
+
