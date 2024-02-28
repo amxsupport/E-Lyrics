@@ -16,3 +16,12 @@ class TestWord(unittest.TestCase):
         """Set up test environment"""
         self.word = Word(text="Test Word")
 
+    def test_attributes(self):
+        """Test Word attributes"""
+        self.assertTrue(hasattr(self.word, 'id'))
+        self.assertTrue(hasattr(self.word, 'created_at'))
+        self.assertTrue(hasattr(self.word, 'updated_at'))
+        self.assertTrue(hasattr(self.word, 'text'))
+        self.assertTrue(hasattr(self.word, 'songs'))
+        self.assertTrue(hasattr(self.word, 'interpretations'))
+
