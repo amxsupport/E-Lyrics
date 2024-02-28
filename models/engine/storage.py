@@ -48,4 +48,17 @@ class Storage:
         """
         self.__session.add(obj)
 
+    def save(self):
+        """commit all changes of the current database session
+        """
+        self.__session.commit()
+
+    def delete(self, obj=None):
+        """delete the object from the current database session
+        Args:
+            obj: given object
+        """
+        if obj is not None:
+            self.__session.delete(obj)
+
 
