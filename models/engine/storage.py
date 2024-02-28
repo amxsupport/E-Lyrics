@@ -70,4 +70,16 @@ class Storage:
                                        expire_on_commit=False)
         self.__session = scoped_session(session_factory)
 
+    def close(self):
+        """close the current session to force reload
+        """
+        print("CLOSE")
+        self.__session.remove()
 
+    def get(self, cls, id):
+        """get object based on class and id"""
+        objs = self.__session.query(classes[cls]).all()
+        for obj in objs:
+            if obj.__class__.__name__ == cls and obj.id == id:
+                return obj
+        return None
