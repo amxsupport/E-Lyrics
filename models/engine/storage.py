@@ -41,4 +41,11 @@ class Storage:
                 obj_dict[key] = obj
         return obj_dict
 
+    def new(self, obj):
+        """add the object to the current database session
+        Args:
+            obj: given object
+        """
+        self.__session.add(obj)
+
 
