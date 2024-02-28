@@ -25,3 +25,14 @@ class TestWord(unittest.TestCase):
         self.assertTrue(hasattr(self.word, 'songs'))
         self.assertTrue(hasattr(self.word, 'interpretations'))
 
+    def test_text_attribute(self):
+        """Test text attribute"""
+        self.assertEqual(self.word.text, "Test Word")
+        
+    def test_relationships(self):
+        """Test relationships"""
+        self.assertEqual(self.word.songs, [])
+        self.assertEqual(self.word.interpretations, [])
+        
+if __name__ == '__main__':
+    unittest.main()
