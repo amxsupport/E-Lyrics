@@ -24,4 +24,21 @@ class Storage:
             os.getenv("LYRICS_MYSQL_HOST"), os.getenv("LYRICS_MYSQL_DB"),
             pool_pre_ping=True))
 
+    def all(self, cls=None):
+        """return a dictionary
+        Return:
+            returns a dictionary of objects
+        """
+        obj_dict = {}
+        if cls is None:
+            for obj in self.__session.query(Song, Word, Interpretation,
+                                            Suggestion).all():
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                obj_dict[key] = obj
+        else:
+            for obj in self.__session.query(cls).all():
+                key = "{}.{}".format(cls.__name__, obj.id)
+                obj_dict[key] = obj
+        return obj_dict
+
 
