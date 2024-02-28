@@ -39,3 +39,13 @@ class TestSuggestion(unittest.TestCase):
         """Test suggested_words attribute"""
         self.assertEqual(self.suggestion.suggested_words, "Test Words")
 
+    def test_name_attribute(self):
+        """Test name attribute"""
+        self.assertEqual(self.suggestion.name, "Test User")
+        
+    def test_email_attribute(self):
+        """Test email attribute"""
+        self.assertEqual(self.suggestion.email, "test@example.com")
+        
+if __name__ == '__main__':
+    unittest.main()
