@@ -61,4 +61,13 @@ class Storage:
         if obj is not None:
             self.__session.delete(obj)
 
+    def reload(self):
+        """create all tables in the database and the current database session
+        """
+        print("RELOAD")
+        Base.metadata.create_all(self.__engine)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
+        self.__session = scoped_session(session_factory)
+
 
