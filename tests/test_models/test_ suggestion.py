@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Defines unnittests for models/suggestion.py."""
-
 import unittest
 from models.suggestion import Suggestion
 from datetime import datetime
@@ -27,4 +26,16 @@ class TestSuggestion(unittest.TestCase):
         self.assertTrue(hasattr(self.suggestion, 'suggested_words'))
         self.assertTrue(hasattr(self.suggestion, 'name'))
         self.assertTrue(hasattr(self.suggestion, 'email'))
+
+    def test_suggested_artist_attribute(self):
+        """Test suggested_artist attribute"""
+        self.assertEqual(self.suggestion.suggested_artist, "Test Artist")
+        
+    def test_suggested_song_attribute(self):
+        """Test suggested_song attribute"""
+        self.assertEqual(self.suggestion.suggested_song, "Test Song")
+        
+    def test_suggested_words_attribute(self):
+        """Test suggested_words attribute"""
+        self.assertEqual(self.suggestion.suggested_words, "Test Words")
 
