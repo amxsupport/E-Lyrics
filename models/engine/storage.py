@@ -13,6 +13,7 @@ import os
 classes = {"Song": Song, "Word": Word, "Interpretation": Interpretation,
            "Suggestion": Suggestion}
 
+
 class Storage:
     """This class manages the MySQL database for Lyrics for Learning"""
     __engine = None
