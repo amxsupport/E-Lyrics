@@ -3,6 +3,10 @@
 
 import unittest
 from models.interpretation import Interpretation
+from models.song import Song
+from models.suggestion import Suggestion
+from models.word import Word
+from models.base_model import BaseModel
 from datetime import datetime
 from unittest.mock import patch
 
