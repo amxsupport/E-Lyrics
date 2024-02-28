@@ -2,6 +2,10 @@
 """Defines unnittests for models/suggestion.py."""
 import unittest
 from models.suggestion import Suggestion
+from models.song import Song
+from models.word import Word
+from models.interpretation import Interpretation
+from models.base_model import BaseModel
 from datetime import datetime
 from unittest.mock import patch
 
