@@ -99,3 +99,9 @@ class TestStorage(unittest.TestCase):
         retrieved_song = self.storage.get("Song", new_song.id)
         self.assertEqual(retrieved_song, new_song)
 
+    def tearDown(self):
+        """Clean up after tests"""
+        self.storage.close()
+        
+if __name__ == '__main__':
+    unittest.main()
