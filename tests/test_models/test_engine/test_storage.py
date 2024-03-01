@@ -80,3 +80,11 @@ class TestStorage(unittest.TestCase):
         all_songs = self.storage.all(Song)
         self.assertNotIn(new_song.id, all_songs)
 
+    def test_reload_method(self):
+        """Test reload method"""
+        # Test reloading session
+        initial_session = self.storage._Storage__session
+        self.storage.reload()
+        new_session = self.storage._Storage__session
+        self.assertIsNot(initial_session, new_session)
+
