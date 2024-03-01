@@ -23,3 +23,27 @@ class TestStorage(unittest.TestCase):
         self.storage = Storage()
         self.storage.reload()
 
+    def test_all_method(self):
+        """Test all method"""
+        # Test without specifying class
+        all_objects = self.storage.all()
+        self.assertIsInstance(all_objects, dict)
+        self.assertTrue(all_objects)
+        
+        # Test with specifying class
+        all_songs = self.storage.all(Song)
+        self.assertIsInstance(all_songs, dict)
+        self.assertTrue(all_songs)
+        
+        all_words = self.storage.all(Word)
+        self.assertIsInstance(all_words, dict)
+        self.assertTrue(all_words)
+        
+        all_interpretations = self.storage.all(Interpretation)
+        self.assertIsInstance(all_interpretations, dict)
+        self.assertTrue(all_interpretations)
+        
+        all_suggestions = self.storage.all(Suggestion)
+        self.assertIsInstance(all_suggestions, dict)
+        self.assertTrue(all_suggestions)
+
