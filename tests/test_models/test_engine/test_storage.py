@@ -47,3 +47,13 @@ class TestStorage(unittest.TestCase):
         self.assertIsInstance(all_suggestions, dict)
         self.assertTrue(all_suggestions)
 
+    def test_new_method(self):
+        """Test new method"""
+        # Test adding a new song
+        new_song = Song(artist="Test Artist", title="Test Title",
+                        lyrics="Test Lyrics", genre="Test Genre",
+                        image_url="https://example.com/test.jpg")
+        self.storage.new(new_song)
+        all_songs = self.storage.all(Song)
+        self.assertIn(new_song.id, all_songs)
+
