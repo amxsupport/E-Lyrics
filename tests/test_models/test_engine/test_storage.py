@@ -57,3 +57,14 @@ class TestStorage(unittest.TestCase):
         all_songs = self.storage.all(Song)
         self.assertIn(new_song.id, all_songs)
 
+    def test_save_method(self):
+        """Test save method"""
+        # Test saving changes
+        new_song = Song(artist="Test Artist", title="Test Title",
+                        lyrics="Test Lyrics", genre="Test Genre",
+                        image_url="https://example.com/test.jpg")
+        self.storage.new(new_song)
+        self.storage.save()
+        all_songs = self.storage.all(Song)
+        self.assertIn(new_song.id, all_songs)
+
