@@ -68,3 +68,15 @@ class TestStorage(unittest.TestCase):
         all_songs = self.storage.all(Song)
         self.assertIn(new_song.id, all_songs)
 
+    def test_delete_method(self):
+        """Test delete method"""
+        # Test deleting a song
+        new_song = Song(artist="Test Artist", title="Test Title",
+                        lyrics="Test Lyrics", genre="Test Genre",
+                        image_url="https://example.com/test.jpg")
+        self.storage.new(new_song)
+        self.storage.save()
+        self.storage.delete(new_song)
+        all_songs = self.storage.all(Song)
+        self.assertNotIn(new_song.id, all_songs)
+
