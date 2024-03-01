@@ -88,3 +88,14 @@ class TestStorage(unittest.TestCase):
         new_session = self.storage._Storage__session
         self.assertIsNot(initial_session, new_session)
 
+    def test_get_method(self):
+        """Test get method"""
+        # Test getting an object by class and ID
+        new_song = Song(artist="Test Artist", title="Test Title",
+                        lyrics="Test Lyrics", genre="Test Genre",
+                        image_url="https://example.com/test.jpg")
+        self.storage.new(new_song)
+        self.storage.save()
+        retrieved_song = self.storage.get("Song", new_song.id)
+        self.assertEqual(retrieved_song, new_song)
+
