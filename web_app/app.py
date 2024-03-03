@@ -3,7 +3,6 @@
 from flask import Flask
 from flask import render_template
 from models import storage
-from models import BaseModel
 from models import Song
 
 app = Flask(__name__)
@@ -19,8 +18,13 @@ def display_song(text):
     songs_dict = storage.all(Song)
     result = songs_dict.get("Song.{:}".format(text))
     if result is not None:
-            return render_template('song.html', song=result)
+            return render_template('song.html')
     return "NOT FOUND"
+
+@app.route('/suggest', strict_slashes=False)
+def display_suggest():
+    """handles request for Suggest a Song page"""
+    return render_template('suggest.html')
 
 @app.teardown_appcontext
 def teardown_db(self):
