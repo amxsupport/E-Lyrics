@@ -12,3 +12,12 @@ app = Flask(__name__)
 def display_homepage():
     """handles request for homepage"""
     return render_template('homepage.html')
+
+@app.route('/songs/<text>', strict_slashes=False)
+def display_song(text):
+    """handles request for specific song based on title"""
+    songs_dict = storage.all(Song)
+    result = songs_dict.get("Song.{:}".format(text))
+    if result is not None:
+            return render_template('song.html', song=result)
+    return "NOT FOUND"
