@@ -37,4 +37,15 @@ ard Image">
     );
   }
   /**
-
+* Sets up event listener to redirect user to selected song page
+*
+* @param {Song object} song
+* @returns undefined
+*/
+  function setupNav (song) {
+    document.getElementById(song.id).addEventListener('click', function () {
+      window.location.href = 'http://0.0.0.0:5000/songs/' + song.id;
+    }
+    );
+  }
+});
