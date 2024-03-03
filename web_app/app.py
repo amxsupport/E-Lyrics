@@ -21,3 +21,11 @@ def display_song(text):
     if result is not None:
             return render_template('song.html', song=result)
     return "NOT FOUND"
+
+@app.teardown_appcontext
+def teardown_db(self):
+    """removes the current SQLAlchemy Session"""
+    storage.close()
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
