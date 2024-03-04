@@ -216,3 +216,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     document.getElementById('interpretation-section').insertAdjacentHTML('beforeend', textArea);
     document.getElementById('interpretation-section').insertAdjacentHTML('beforeend', submitButton);
   }
+
+  /**
+ * Adds event listener for postinhg of interpretation to internal REST API
+ *
+ * @returns {undefined}
+ */
+  function setupPost () {
+    form = document.getElementById('interpretation-section');
+    form.addEventListener('submit', postInterpretation);
+  }
+
