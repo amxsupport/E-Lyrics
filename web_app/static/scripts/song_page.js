@@ -285,3 +285,24 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	console.error(err);
       }}
 
+  /**
+ * Creates HTML for displaying interpretations
+ *
+ * @returns {HTML} displaySection
+ */
+  function setupDisplaySection () {
+    word = document.getElementById('selectedWord').getAttribute('text');
+    return (
+`<div role="tablist" id="accordion-1">
+    <div class="card">
+        <div class="card-header" role="tab">
+            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">Latest Intepretations for <i>${word}</i></a></h5>
+        </div>
+        <div class="collapse item-1" role="tabpanel" data-parent="#accordion-1">
+            <div class="card-body" id="content-div">
+            </div>
+        </div>
+    </div>
+</div>`);
+}
+
