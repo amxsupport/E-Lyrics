@@ -306,3 +306,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 </div>`);
 }
 
+/**
+ * Returns of dictionary of other songs within the same genre based on API response from internal RESTful API
+ *
+ * @returns {dictionary} suggestionDict
+ */
+function suggestions (data) {
+  if (data.length > 0) {
+    suggestionDict = {};
+    for (i = 0; i < data.length; i++) {
+      if (data[i].title != document.getElementById('song-title').innerHTML) { suggestionDict[data[i].id] = data[i].title; }
+    }
+    return (suggestionDict);
+  }
+}
