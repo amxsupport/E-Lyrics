@@ -320,3 +320,14 @@ function suggestions (data) {
     return (suggestionDict);
   }
 }
+/**
+ * Adds event listener for redirection to other song pages within same genre
+ *
+ * @returns {undefined}
+ */
+function suggestionNav (id) {
+  document.getElementById(id).addEventListener('click', function () {
+    window.location.href = 'http://0.0.0.0:5000/songs/' + id;
+  });
+}
+});
