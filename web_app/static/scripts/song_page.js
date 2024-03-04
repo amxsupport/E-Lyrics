@@ -174,3 +174,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
       if (document.getElementById('displaySection').innerHTML == '') { displayInterpretations(); }
     });
   }
+
+  /**
+ * Sets up display of tabs and associated panels for content
+ *
+ * @param {dictionary} tabDict
+ * @returns {undefined}
+ */
+  function appendTabs (tabDict) {
+    tabDictKeys = Object.keys(tabDict);
+    for (i = 0; i < tabDictKeys.length; i++) {
+      if (i == 0) {
+        tab = '<li class="nav-item"><a class="nav-link active"' +
+	`id="${tabDictKeys[i]}-tab" data-toggle="tab" href="#${tabDictKeys[i]}"` +
+	`role="tab" aria-controls="${tabDictKeys[i]}" aria-selected="true">${tabDictKeys[i]}</a></li>`;
+        tabContent = '<div class="tab-pane fade show active"' +
+	`id="${tabDictKeys[i]}" role="tabpanel"` +
+	`aria-labelledby="${tabDictKeys[i]}-tab"><p>${tabDict[tabDictKeys[i]]}</p></div>`;
+      } else {
+        tab = '<li class="nav-item"><a class="nav-link"' +
+	`id="${tabDictKeys[i]}-tab" data-toggle="tab"` +
+      `href="#${tabDictKeys[i]}" role="tab" aria-controls="${tabDictKeys[i]}" aria-selected="true">${tabDictKeys[i]}</a></li>`;
+        tabContent = `<div class="tab-pane fade" id="${tabDictKeys[i]}"` +
+	`role="tabpanel" aria-labelledby="${tabDictKeys[i]}-tab">${tabDict[tabDictKeys[i]]}</div>`;
+      }
+      document.getElementById('wordTabs').insertAdjacentHTML('beforeend', tab);
+      document.getElementById('myTabContent').insertAdjacentHTML('beforeend', tabContent);
+    }
+  }
