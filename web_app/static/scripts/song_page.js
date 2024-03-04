@@ -259,3 +259,29 @@ document.addEventListener('DOMContentLoaded', function (event) {
       console.error(err);
     }}
 
+  /**
+ * Fetches and displays intepretations for word in specific song
+ *
+ * @returns {undefined}
+ */
+  async function displayInterpretations () {
+    try {
+      word = document.getElementById('selectedWord').getAttribute('text');
+      wordIdUrl = 'http://0.0.0.0:5001/api/v1/words/' + word;
+      let wordIdResponse = await fetch(wordIdUrl);
+      let wordIdData = await wordIdResponse.json();
+      let interpretationsApiResponse = await fetch('http://0.0.0.0:5001/api/v1/interpretations/' + wordIdData + '/' + id)
+      let interpretationsData = await interpretationsApiResponse.json()
+      displaySection = setupDisplaySection();
+      document.getElementById('displaySection').insertAdjacentHTML('beforeend', displaySection);
+      contentDiv = document.getElementById('content-div');
+      if (interpretationsData.length > 0) {
+	for (i = 0; i < interpretationsData.length; i++) {
+	  contentDiv.insertAdjacentHTML('beforeend', `<p class="card-text">"<i>${interpretationsData[i].text}</i>"</p>`);
+	}
+      } else {
+	contentDiv.insertAdjacentHTML('beforeend', `<p class="card-text">Be the first to share what you think the artist means by <i>${word}</i></p>`);
+      }} catch(err) {
+	console.error(err);
+      }}
+
