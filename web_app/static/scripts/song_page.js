@@ -39,3 +39,39 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	console.error(err);
     }}
 
+ // Fetches associated words and modifies lyrics HTML for highlighting of selected words
+  async function songWords(id) {
+    try {
+      const songWordsApiUrl = 'http://0.0.0.0:5001/api/v1/songs/' + id + '/words';
+      let songWordsResponse = await fetch(songWordsApiUrl);
+      let songWordsData = await songWordsResponse.json();
+      console.log("third");
+      for (i = 0; i < songWordsData.length; i++) {
+	item = document.createElement('LI');
+	text = document.createTextNode(songWordsData[i].text);
+	item.appendChild(text);
+	document.getElementById('wordlist').appendChild(item);
+	setupWordFetch(item);
+      }
+      featuredWords = document.getElementById('wordlist').querySelectorAll('li');
+      modFeaturedWords = [];
+      for (i = 0; i < featuredWords.length; i++) { modFeaturedWords.push(featuredWords[i].innerText); }
+      lyrics = document.getElementById('song-lyrics').innerHTML;
+      console.log(lyrics);
+      modLyrics = lyrics.replace(/\n/g, '+\n');
+      console.log('Modified: ' + modLyrics);
+      words = modLyrics.split(/\+| /);
+      console.log(words);
+      for (i = 0; i < words.length; i++) {
+        console.log(words[i]);
+        if (modFeaturedWords.includes(words[i].replace(/[\".,\/#!$%\^&\*;:{}=\-_`~()\n]/g, ''))) {
+          console.log('Found: ' + words[i]);
+          words[i] = `<span class = ${words[i].replace(/[\".,\/#!$%\^&\*;:{}=\-_`~()]/g, '')}>` + words[i] + '</span>';
+        }
+      }
+      document.getElementById('song-lyrics').innerHTML = words.join(' ');
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
