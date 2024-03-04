@@ -227,3 +227,35 @@ document.addEventListener('DOMContentLoaded', function (event) {
     form.addEventListener('submit', postInterpretation);
   }
 
+  /**
+ * Checks for profanity in interpretation, makes POST request to internal REST API, and displays confirmation dialog
+ *
+ * @param {event object} event
+ * @returns {undefined}
+ */
+  async function postInterpretation (event) {
+    try {
+      event.preventDefault();
+      word = document.getElementById('selectedWord').getAttribute('text');
+      wordIdUrl = 'http://0.0.0.0:5001/api/v1/words/' + word;
+      let wordIdResponse = await fetch(wordIdUrl);
+      let wordIdData = await wordIdResponse.json();
+      console.log(wordIdData);
+      interpretation = document.getElementById('interpretation-text-area').value;
+      interpretationDict = { text: interpretation };
+      interpretationUrl = 'http://0.0.0.0:5001/api/v1/interpretations/' + wordIdData + '/' + id;
+      let interpretationUrlResponse = await fetch(
+	interpretationUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(interpretationDict) })
+      let interpretationData = interpretationUrlResponse.json()
+      document.getElementById('interpretation-section').style.display = 'none';
+      if ('error' in interpretationData && interpretationData.error == 'Profane') {
+	confirmationDialog = `<br><p id = "confirmationDialog">Your submission for <i>${word}</i> contains profane content. It will not be posted.</p>`;
+      } else {
+	confirmationDialog = `<br><p id = "confirmationDialog">Thanks for your submission for <i>${word}</i>!</p>`;
+      }
+      document.getElementById('word-specific-body').insertAdjacentHTML('beforeend', confirmationDialog);
+    }
+    catch(err) {
+      console.error(err);
+    }}
+
