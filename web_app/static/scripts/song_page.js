@@ -124,3 +124,53 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	console.error(error);
       }}
 
+  /**
+ * Creates button group for menu of word entries
+ *
+ * @returns {HTML}
+ */
+  function buttonGroupHTML () {
+    return (
+    `<div class="btn-group flex-wrap" role="group" aria-label="Basic example" id="entries_button_group">
+      </div>`
+    );
+  }
+  /**
+ * Creates button for word entry in button group
+ *
+ * @param {number} index
+ * @returns {undefined}
+ */
+  function buttonHTML (index) {
+    return (`<button type="button" class="btn btn-secondary" id=${index}>${index}</button>`);
+  }
+  /**
+ * Adds event listener so key info about each word can be displayed in tabs
+ *
+ * @param {dictionary} data
+ * @param {number} entryId
+ * @returns {undefined}
+ */
+  function setupEntry (data, entryId) {
+    document.getElementById(entryId).addEventListener('click', function () {
+      const tabDict = {};
+      const keys = Object.keys(data.results[entryId]);
+      for (i = 0; i < keys.length; i++) {
+        if (keys[i] == 'definition' || keys[i] == 'partOfSpeech' ||
+	  keys[i] == 'synonyms' || keys[i] == 'antonyms' ||
+	  keys[i] == 'examples') {
+          if (data.results[entryId][keys[i]] != null) { tabDict[keys[i]] = data.results[entryId][keys[i]]; }
+        }
+      }
+      document.getElementById('wordTabs').innerHTML = '';
+      document.getElementById('myTabContent').innerHTML = '';
+      document.getElementById('wordTabs').classList.add('nav', 'nav-tabs');
+      appendTabs(tabDict);
+      document.getElementById('wordCard').classList.add('card');
+      if (!document.getElementById('prompt')) {
+        addInterpretationPrompt(data);
+        setupPost();
+      }
+      if (document.getElementById('displaySection').innerHTML == '') { displayInterpretations(); }
+    });
+  }
