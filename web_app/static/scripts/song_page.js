@@ -202,3 +202,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById('myTabContent').insertAdjacentHTML('beforeend', tabContent);
     }
   }
+  /**
+ * Creates and inserts HTML for submitting interpretations
+ *
+ * @param {dictionary} data
+ * @returns {undefined}
+ */
+  function addInterpretationPrompt (data) {
+    prompt = `<br><label for="interpretation-text-area" id="prompt">After exploring a few entries, share what you think the artist means by <i>\"${data.word}\"</i>...</label>`;
+    textArea = '<textarea class="form-control" form="interpretation-section" name="interpretation "id="interpretation-text-area" rows="3" ></textarea>';
+    submitButton = '<br><button type="submit" class="btn btn-primary">Submit</button>';
+    document.getElementById('interpretation-section').insertAdjacentHTML('beforeend', prompt);
+    document.getElementById('interpretation-section').insertAdjacentHTML('beforeend', textArea);
+    document.getElementById('interpretation-section').insertAdjacentHTML('beforeend', submitButton);
+  }
