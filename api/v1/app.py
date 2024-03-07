@@ -18,4 +18,13 @@ def page_not_found(e):
     return jsonify({"error": "Not found"}), 404
 
 
+@app.teardown_appcontext
+def app_teardown(self):
+    """remove the current SQLAlchemy Session when the application context ends
+    """
+    storage.close()
 
+if __name__ == "__main__":
+    app.run(host=os.getenv('LYRICS_API_HOST') or '0.0.0.0',
+            port=os.getenv('LYRICS_API_PORT') or 5001,
+            threaded=True)
