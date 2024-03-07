@@ -10,3 +10,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 app.register_blueprint(app_views)
 cors = CORS(app, resources={r"/*": {"origins": 'http://0.0.0.0:5000'}})
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Error handling, 404"""
+    return jsonify({"error": "Not found"}), 404
+
+
+
