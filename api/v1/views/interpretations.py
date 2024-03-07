@@ -29,4 +29,29 @@ def get_interpretations(word_id=None, song_id=None):
             interpretations_list.append(interpretation.to_dict())
     return jsonify(interpretations_list), 200
 
+@app_views.route('/interpretations/<word_id>/<song_id>', methods=['POST'],
+                 strict_slashes=False)
+def post_interpretation(word_id=None, song_id=None):
+    """Creates an interpretation for a word from a song"""
+    print(word_id)
+    print(song_id)
+    word = storage.get('Word', word_id)
+    if word is None:
+        abort(404)
+    song = storage.get('Song', song_id)
+    if song is None:
+        abort(404)
+    result = request.get_json()
+    if result is None:
+        return jsonify({"error": "Not a JSON"}), 400
+    if 'text' not in result:
+        return jsonify({"error": "Missing text"}), 400
+    if profanity.contains_profanity(result["text"]) is True:
+        return jsonify({"error": "Profane"}), 400
+    interpretation_obj = Interpretation(word_id=word_id, song_id=song_id)
+    setattr(interpretation_obj, "text", result["text"])
+    storage.new(interpretation_obj)
+    storage.save()
+    return jsonify(interpretation_obj.to_dict()), 201
+
 
