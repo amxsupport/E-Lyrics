@@ -8,3 +8,18 @@ headers = {
     'x-rapidapi-key': "ENTER API KEY FOR WORDS API"
     }
 
+"""Prompt the user"""
+
+print('Enter an artist and song! Then see the words from the song that are used least frequently in the English-speaking world!', '\n')
+artist = input('Artist: ')
+song = input('Song: ')
+
+"""Fetch lyrics from lyrics.ovh based on user input and print them. Validate input data"""
+
+lyrics_dict = requests.get('https://api.lyrics.ovh/v1/{:}/{:}'.format(artist, song)).json()
+if lyrics_dict == None:
+    print("Sorry, that song does not exist. Check your spelling and try again")
+    exit
+lyrics = lyrics_dict.get('lyrics')
+print("Lyrics...", "\n", "\n", lyrics)
+
