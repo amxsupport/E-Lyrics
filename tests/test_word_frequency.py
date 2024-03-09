@@ -18,3 +18,15 @@ class TestWordAnalysis(unittest.TestCase):
         # Assertions
         self.assertEqual(result, 'This is a test lyrics')
         
+    def test_process_lyrics(self):
+        """Test process_lyrics function"""
+        # Input
+        lyrics = 'This is a test lyrics with some punctuation! And newlines.\n'
+        
+        # Call function
+        result = process_lyrics(lyrics)
+        
+        # Assertions
+        expected_result = ['This', 'is', 'a', 'test', 'lyrics', 'with', 'some', 'punctuation', 'And', 'newlines']
+        self.assertEqual(result, expected_result)
+
