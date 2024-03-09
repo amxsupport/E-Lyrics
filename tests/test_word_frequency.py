@@ -43,3 +43,17 @@ class TestWordAnalysis(unittest.TestCase):
         # Assertions
         self.assertEqual(result, 10)
 
+    def test_find_least_frequent_words(self):
+        """Test find_least_frequent_words function"""
+        # Input
+        word_frequency = {'word1': 10, 'word2': 5, 'word3': 20, 'word4': 3}
+        
+        # Call function
+        result = find_least_frequent_words(word_frequency, 2)
+        
+        # Assertions
+        expected_result = [('word4', 3), ('word2', 5)]
+        self.assertEqual(result, expected_result)
+        
+if __name__ == '__main__':
+    unittest.main()
