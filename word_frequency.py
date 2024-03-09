@@ -40,4 +40,16 @@ for word in words:
         else:
                        result_dict[word] = -1
 
+"""Generates a list of tuples based on dictionary items. Sorts words by frequency in ascending order and prints the first 10"""
 
+sorted_list = sorted(result_dict.items(), key=operator.itemgetter(1))
+print(
+    "Top 10 Words From \"{:}\" That Are Used Least Frequently In The ".format(
+        song) + "English-Speaking World...", "\n")
+count = 0
+for item in sorted_list:
+    if item[1] > 0:
+        print("{:}: {:} ".format(item[0], item[1]))
+        count = count + 1
+        if count > 9:
+            break
