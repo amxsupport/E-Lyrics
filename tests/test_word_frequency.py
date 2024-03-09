@@ -30,3 +30,16 @@ class TestWordAnalysis(unittest.TestCase):
         expected_result = ['This', 'is', 'a', 'test', 'lyrics', 'with', 'some', 'punctuation', 'And', 'newlines']
         self.assertEqual(result, expected_result)
 
+    @patch('requests.get')
+    def test_fetch_word_frequency(self, mock_requests_get):
+        """Test fetch_word_frequency function"""
+        # Mock response
+        word_dict = {'frequency': 10}
+        mock_requests_get.return_value.json.return_value = word_dict
+        
+        # Call function
+        result = fetch_word_frequency('test')
+        
+        # Assertions
+        self.assertEqual(result, 10)
+
