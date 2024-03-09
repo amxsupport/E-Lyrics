@@ -1,4 +1,4 @@
-# ![Logo](https://imgur.com/a/Gd9Z8M7.png) 
+# ![Logo](https://imgur.com/a/Gd9Z8M7) 
 #		E-Lyrics
 ##	English Lyric Learning Hub
 
