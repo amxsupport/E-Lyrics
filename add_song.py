@@ -27,4 +27,15 @@ words = input('words: ')
 word_list = map(str, words.strip('[]').split(','))
 db_words = {}
 
-
+for word in storage.all(Word).values():
+    db_words[word.text] = word
+for item in word_list:
+    if db_words.get(item) is None:
+        word = Word()
+        word.text = item
+        word.save()
+        song.words.append(word)
+    else:
+        song.words.append(db_words[item])
+models.storage.new(song)
+song.save()
