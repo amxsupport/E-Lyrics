@@ -23,3 +23,21 @@ if lyrics_dict == None:
 lyrics = lyrics_dict.get('lyrics')
 print("Lyrics...", "\n", "\n", lyrics)
 
+"""Prepare lyrics for analysis by removing punctuation, replacing newlines, and splitting lyrics string into list of word sub-strings"""
+
+mod_lyrics = re.sub(r'[^\w\s]','', lyrics.replace('\n', " "))
+words = mod_lyrics.split(" ")
+
+"""Fetch breakdown of all words from Words API and stores the frequency of each word in a dictionary"""
+
+result_dict = {}
+for word in words:
+    if result_dict.get(word.lower()) is None and result_dict.get(word.capitalize()) is None:
+        url = "https://wordsapiv1.p.rapidapi.com/words/{:}".format(word)
+        word_dict = requests.request("GET", url, headers=headers).json()
+        if word_dict.get("frequency") is not None:
+                       result_dict[word] = word_dict.get("frequency")
+        else:
+                       result_dict[word] = -1
+
+
