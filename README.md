@@ -1,4 +1,4 @@
-# <p align="center"> ![Logo](https://imgur.com/a/qQo3Mh2) </p>
+# <p align="center"> ![Logo](https://i.imgur.com/yx62kSK.png) </p>
 #		E-Lyrics
 ##	English Lyric Learning Hub
 
