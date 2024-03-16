@@ -89,7 +89,7 @@ To propose a new addition to our song collection for learning purposes, users ca
 
 ## API
 
-I developed an internal RESTful API to facilitate flexible data retrieval from the MySQL database for this web application. All available endpoints are located within the api.v1.views directory. Below is a concise overview of each endpoint:
+We developed an internal RESTful API to facilitate flexible data retrieval from the MySQL database for this web application. All available endpoints are located within the api.v1.views directory. Below is a concise overview of each endpoint:
 
 /api/v1/interpretations/<word_id>/<song_id>
 
@@ -140,3 +140,18 @@ Furthermore, we envision enabling users to edit their past submissions and inter
 Your input and feedback are invaluable to us as we strive to shape the future of E-Lyrics. Whether you have feature ideas or wish to contribute to the project, we welcome your participation. Feel free to reach out to us with any suggestions or contributions you may have. Together, let's continue to elevate the E-Lyrics experience!
 
 ## Attributions
+
+Shout-out to [Open Lyrics Database](https://github.com/Lyrics/lyrics) for the lyrics shown!
+
+Licenses for images from Wikimedia Commons:
+
+* [The xx at the Alcatraz.jpg](https://commons.wikimedia.org/wiki/File:The_xx_at_the_Alcatraz.jpg)
+* [Adele Live 2016 tour.jpeg](https://commons.wikimedia.org/wiki/File:Adele_Live_2016_tour.jpeg)
+* [Paul Simonon The Clash September 20 1979 Palladium NYC.jpg](https://commons.wikimedia.org/wiki/File:Paul_Simonon_The_Clash_September_20_1979_Palladium_NYC.jpg)
+
+## Author
+
+### **Abdelaaziz Amksa**
+
+### **Ottman Chouqar**
+
