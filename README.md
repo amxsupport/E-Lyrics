@@ -49,7 +49,7 @@ Initially, Lyrics for Learning was going to solely allow students to check out l
 
 ## Getting Started
 
-To start using this web application, visit lyricsforlearning.net. To install it, simply clone this repository. You can start the app by running `web_app.app` and `api.v1.app` as Python modules in separate terminal windows. Please note, in order to run this app, you will need to install necessary dependencies as well as pass in the correct MySQLdb and Words API credentials respectively.
+To start using this web application, visit [amxsupport.tech](https://www.amxsupport.tech/E-lyrics_static/templates/homepage.html). To install it, simply clone this repository. You can start the app by running `web_app.app` and `api.v1.app` as Python modules in separate terminal windows. Please note, in order to run this app, you will need to install necessary dependencies as well as pass in the correct MySQLdb and Words API credentials respectively.
 
 ## Features
 
@@ -89,4 +89,54 @@ To propose a new addition to our song collection for learning purposes, users ca
 
 ## API
 
+I developed an internal RESTful API to facilitate flexible data retrieval from the MySQL database for this web application. All available endpoints are located within the api.v1.views directory. Below is a concise overview of each endpoint:
 
+/api/v1/interpretations/<word_id>/<song_id>
+
+* GET: Fetches all Interpretation objects associated with a word from a specific song and returns a list containing them.
+
+* POST: Creates a new interpretation for a word within a song.
+
+/api/v1/interpretations/<interpretation_id>
+
+* PUT: Updates an existing Interpretation object.
+
+/api/v1/songs/<song_id>/words
+
+* GET: Retrieves all words associated with a particular song and returns a list containing them.
+
+/api/v1/songs
+
+* GET: Retrieves all Song objects stored in the database and returns a list containing them.
+
+/api/v1/songs/<text>
+  
+* GET: Retrieves a specific Song object from the database based on its title and returns a dictionary containing its details.
+
+/api/v1/songs/genre/<genre>
+  
+* GET: Retrieves all Song objects from the database belonging to a specified genre.
+
+/api/v1/suggestions/
+
+* GET: Retrieves all Suggestion objects from the database and returns a list containing them.
+    
+* POST: Submits a new Suggestion object.
+
+/api/v1/words/<text>
+  
+* GET: Retrieves the word_id associated with a specific word.
+
+/api/v1/words_api/<text>
+
+* GET: Fetches data for a word from an external API and returns the response to the client-side. By passing API credentials via the command line during API execution and utilizing the internal API for fetching, it ensures that credentials remain secure and are not exposed on the front-end.
+
+## Future
+
+After successfully launching our initial MVP within a span of 2 weeks, our vision for E-Lyrics extends far beyond its current capabilities. Our roadmap includes a plethora of exciting features aimed at enhancing user experience and engagement. Foremost among these is the implementation of a robust authentication system, empowering users to create personalized profiles. These profiles will serve as a hub for users to track their progress, revisit past interactions, and suggest new songs and words based on their preferences and usage history.
+
+Furthermore, we envision enabling users to edit their past submissions and interact with each other by upvoting interpretations. Additionally, we are contemplating the addition of a "Top Users" leaderboard on the homepage to recognize and celebrate active contributors.
+
+Your input and feedback are invaluable to us as we strive to shape the future of E-Lyrics. Whether you have feature ideas or wish to contribute to the project, we welcome your participation. Feel free to reach out to us with any suggestions or contributions you may have. Together, let's continue to elevate the E-Lyrics experience!
+
+## Attributions
