@@ -33,15 +33,15 @@ Initially, Lyrics for Learning was going to solely allow students to check out l
 
 ### Technologies 🤖 : 
 
-SOLAlchemy
-MySQL
-python
-Flask
-Bootstrap
-JavaScript
-gunicorn
-NGINX
-DigitalOcean
+- [SOLAlchemy]
+- [MySQL]
+- [python]
+- [Flask]
+- [Bootstrap]
+- [JavaScript]
+- [gunicorn]
+- [NGINX]
+- [DigitalOcean]
 
 ### Architecture
 
