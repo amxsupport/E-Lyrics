@@ -49,7 +49,7 @@ Initially, English Lyric Learning Hub was going to solely allow students to chec
 
 ## Getting Started
 
-To start using this web application, visit [amxsupport.tech](https://www.amxsupport.tech/E-lyrics_static/templates/homepage.html). To install it, simply clone this repository. You can start the app by running `web_app.app` and `api.v1.app` as Python modules in separate terminal windows. Please note, in order to run this app, you will need to install necessary dependencies as well as pass in the correct MySQLdb and Words API credentials respectively.
+To start using this web application, visit [E-Lyrics](https://amxsupport.github.io/E-Lyrics/web_app/templates/homepage.html). To install it, simply clone this repository. You can start the app by running `web_app.app` and `api.v1.app` as Python modules in separate terminal windows. Please note, in order to run this app, you will need to install necessary dependencies as well as pass in the correct MySQLdb and Words API credentials respectively.
 
 ## Features
 
